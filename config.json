@@ -1,0 +1,28 @@
+{
+  "locals": {
+    "url": "http://localhost:8080",
+    "name": "Sinusoidal Engineering",
+    "owner": "Juan Pedro Bolívar Puente",
+    "description": ""
+  },
+  "plugins": [
+    "./plugins/paginator.coffee",
+    "wintersmith-livereload",
+    "wintersmith-sassify"
+  ],
+  "require": {
+    "moment": "moment",
+    "_": "underscore",
+    "typogr": "typogr"
+  },
+  "jade": {
+    "pretty": true
+  },
+  "markdown": {
+    "smartLists": true,
+    "smartypants": true
+  },
+  "paginator": {
+    "perPage": 3
+  }
+}
