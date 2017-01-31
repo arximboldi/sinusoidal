@@ -1,0 +1,5 @@
+
+```
+wintersmith build
+wintersmith preview
+```
