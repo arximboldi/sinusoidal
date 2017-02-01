@@ -4,7 +4,7 @@ h1, h2, h3, h4, h5, h6, p, body, a, img, ul, ol, blockquote, pre {
 }
 
 body {
-    font-family: 'Lora', serif;
+    font-family: 'Inconsolata', monospaced;
     font-size: 21px;
     line-height: 1.52;
     background-color: #white;
@@ -80,4 +80,24 @@ hr {
     border-top: 1px dashed #d2d2d2;
     height: 0;
     margin: 1.6em 0;
+}
+
+.intro {
+    width: 50%;
+    margin: auto;
+    margin-top: 100px;
+    text-align: center;
+
+    #logo {
+        width: 60%;
+    }
+
+    .tags {
+        padding-top: 30px;
+        text-align: center;
+        text-transform: lowercase;
+        font-size: 0.9em;
+        font-weight: bold;
+        color: #999;
+    }
 }
