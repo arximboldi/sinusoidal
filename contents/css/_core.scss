@@ -239,7 +239,7 @@ $logo-width:  $logo-width-orig * $logo-scale;
 
 .index-intro {
     position: absolute;
-    top: 50%;
+    top: calc(50% + 2em);
     width: 20em;
     left: 0; right: 0;
     margin: 0 auto;
