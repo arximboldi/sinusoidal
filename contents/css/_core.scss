@@ -47,13 +47,24 @@
 // $hl-color: #f0544c;
 // $logo-sin:  '/pic/logo-sin-white.svg';
 // $logo-text: '/pic/logo-text-bg444444.svg';
+// $dehighlight0: 0.2;
+// $dehighlight1: 0.6;
 
-$bg-color: #2d2d2d;
-$fg-color: #ececec;
-$hl-color: #f0544c;
+// $bg-color: #2d2d2d;
+// $fg-color: #ececec;
+// $hl-color: #f0544c;
+// $logo-sin:  '/pic/logo-sin-white.svg';
+// $logo-text: '/pic/logo-text-bg2d2d2d.svg';
+// $dehighlight0: 0.3;
+// $dehighlight1: 0.6;
+
+$bg-color: #f0544c;
+$fg-color: #ffffff;
+$hl-color: #2d2d2d;
 $logo-sin:  '/pic/logo-sin-white.svg';
-$logo-text: '/pic/logo-text-bg2d2d2d.svg';
-
+$logo-text: '/pic/logo-text-bgf0544c.svg';
+$dehighlight0: 0.2;
+$dehighlight1: 0.6;
 
 $break-mobile: 780px;
 $break-laptop: 1370px;
@@ -230,7 +241,7 @@ $logo-width:  $logo-width-orig * $logo-scale;
         background-image: url(#{$logo-sin});
         background-size: contain;
         background-position-x: 100%;
-        opacity: 0.1;
+        opacity: $dehighlight0;
     }
     &::after {
         content: "";
@@ -259,6 +270,6 @@ $logo-width:  $logo-width-orig * $logo-scale;
 
     .tags {
         text-align: right;
-        opacity: 0.6;
+        opacity: $dehighlight1;;
     }
 }
