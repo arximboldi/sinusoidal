@@ -1,5 +1,5 @@
 
-Berlin based software engeneering<br/>
+Berlin based software engineering<br/>
 consulting services by [Juanpe Bolivar](https://sinusoid.es).
 
 <p class="portfolio">
