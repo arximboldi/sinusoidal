@@ -1,14 +1,76 @@
+$bg-color: #444444;
+$fg-color: #ececec;
+$hl-color: #f0544c;
+
+$logo-sin:  '/pic/logo-sin-white.svg';
+$logo-text: '/pic/logo-text-bg444444.svg';
+
+$break-mobile: 780px;
+$break-laptop: 1370px;
+
+@mixin respond-to($media) {
+    @if $media == mobile {
+        @media only screen and (max-width: $break-mobile) {
+            @content;
+        }
+    }
+    @else if $media == laptop {
+        @media only screen and (min-width: $break-mobile + 1)
+        /**/               and (max-width: $break-laptop - 1) {
+            @content;
+        }
+    }
+    @else if $media == desktop {
+        @media only screen and (min-width: $break-laptop) {
+            @content;
+        }
+    }
+    @else if $media == landscape {
+        @media only screen and (orientation: landscape) {
+            @content;
+        }
+    }
+    @else if $media == portrait {
+        @media only screen and (orientation: portrait) {
+            @content;
+        }
+    }
+    @else if $media == touch {
+        @at-root .has-touch & {
+            @content;
+        }
+    }
+    @else if $media == mouse {
+        @at-root .no-touch & {
+            @content;
+        }
+    }
+}
+
+@mixin hover-or-active {
+    @include respond-to(mouse) { &:hover  { @content; } }
+    @include respond-to(touch) { &:active { @content; } }
+}
 
 h1, h2, h3, h4, h5, h6, p, body, a, img, ul, ol, blockquote, pre {
     margin: 0; padding: 0; border: 0;
 }
 
 body {
-    font-family: 'Inconsolata', monospaced;
-    font-size: 21px;
+    font-size: 18px;
     line-height: 1.52;
-    background-color: #white;
-    text-rendering: optimizeLegibility;
+    font-family: 'Inconsolata', monospaced;
+    background-color: $bg-color;
+
+    @include respond-to(mobile) {
+        font-size: 14px;
+    }
+    @include respond-to(laptop) {
+        font-size: 18px;
+    }
+    @include respond-to(desktop) {
+        font-size: 22px;
+    }
 }
 
 .content-wrap {
@@ -17,12 +79,19 @@ body {
 }
 
 body, a {
-    color: #171717;
+    color: $fg-color;
+    text-decoration: none;
+}
+
+a {
+    padding-bottom: 2px;
+    border-bottom: 2px $fg-color solid;
 }
 
 a:hover {
-    color: #ff8000;
-    text-decoration: underline;
+    color: $hl-color;
+    text-decoration: none;
+    border-bottom: 2px $hl-color solid;
 }
 
 p {
@@ -82,22 +151,64 @@ hr {
     margin: 1.6em 0;
 }
 
-.intro {
-    width: 50%;
-    margin: auto;
-    margin-top: 100px;
-    text-align: center;
+.index {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
 
-    #logo {
-        width: 60%;
+$logo-height-orig: 14.72em;
+$logo-width-orig:  44.55em;
+$logo-scale:       0.25;
+
+$logo-height: $logo-height-orig * $logo-scale;
+$logo-width:  $logo-width-orig * $logo-scale;
+
+.index-logo {
+    position: absolute;
+    left: 0;
+    right: 3em;
+    top: 2em;
+    height: $logo-height;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: calc(100% + #{$logo-height}/18 - #{$logo-width});
+        top: 9%;
+        bottom: 9%;
+        background-image: url(#{$logo-sin});
+        background-size: contain;
+        background-position-x: 100%;
+        opacity: 0.3;
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: $logo-width;
+        right: 0;
+        background-image: url(#{$logo-text});
+        background-size: contain;
+    }
+}
+
+.index-intro {
+    position: absolute;
+    top: 50%;
+    width: 20em;
+    left: 0; right: 0;
+    margin: 0 auto;
+    transform: translateY(-50%);
+    text-transform: lowercase;
+
+    .portfolio {
+        width: 100%;
+        text-align: center;
     }
 
     .tags {
-        padding-top: 30px;
-        text-align: center;
-        text-transform: lowercase;
-        font-size: 0.9em;
-        font-weight: bold;
-        color: #999;
+        text-align: right;
+        opacity: 0.6;
     }
 }

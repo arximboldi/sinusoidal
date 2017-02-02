@@ -1,14 +1,15 @@
 
-<img id="logo" src="pic/logo.svg"/>
+Berlin based software engeneering<br/>
+consulting services by [Juanpe Bolivar](https://sinusoid.es).
 
-Berlin based software consultancy
-by [Juanpe Bolivar](https://sinusoid.es).
-
+<p class="portfolio">
 [Portfolio](https://sinusoid.es/do)
+</p>
 
-Contact: [juanpe@sinusoid.al](mailto:juanpe@sinusoid.al)
+**Let's work together:** [juanpe@sinusoid.al](mailto:juanpe@sinusoid.al)
 
 <p class="tags">
-Interactivity | multimedia | Reactive Programming | Modern C++ <br/>
-Open Source & Libre Software
+Interactive Software | Framework Design<br/>
+Reactive Programming | Modern C++<br/>
+Open Source | Libre Software
 </p>

@@ -2,4 +2,6 @@
 extends base
 
 block body
-  div.intro!= contents['index.md'].html
+  div.index
+    div.index-logo
+    div.index-intro!= contents['index.md'].html
