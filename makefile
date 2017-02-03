@@ -1,13 +1,21 @@
 
-.PHONY: build
+WINTERSMITH=node_modules/wintersmith/bin/wintersmith
+
+.PHONY: build deps
 
 all: build
 
-build:
-	wintersmith build
+deps:
+	npm install
 
-serve:
-	wintersmith preview
+node_modules:
+	npm install
+
+build: node_modules
+	$(WINTERSMITH) build
+
+serve: node_modules
+	$(WINTERSMITH) preview
 
 DEST = ~/sync/sinusoidal/
 copy:

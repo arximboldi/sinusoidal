@@ -1,5 +1,5 @@
 
 ```
-wintersmith build
-wintersmith preview
+make
+make serve
 ```
