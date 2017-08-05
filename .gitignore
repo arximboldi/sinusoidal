@@ -4,4 +4,4 @@ tmp/
 _site/
 _cache/
 npm-debug.log
-site
+gen

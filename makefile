@@ -10,11 +10,11 @@ endif
 all: _site
 .PHONY: clean
 
-site: site.hs
-	$(eval_) "ghc --make site.hs -outputdir tmp"
+gen: gen.hs
+	$(eval_) "ghc --make gen.hs -outputdir tmp"
 
-_site: site
-	$(eval_) "./site build"
+_site: gen
+	$(eval_) "./gen build"
 
-clean: site
-	$(eval_) "./site clean"
+clean: gen
+	$(eval_) "./gen clean"
