@@ -1,3 +1,7 @@
-node_modules
+node_modules/
 build/
+tmp/
+_site/
+_cache/
 npm-debug.log
+site
