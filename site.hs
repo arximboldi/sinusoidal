@@ -1,10 +1,10 @@
---------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
 import           Data.Monoid (mappend)
 import           Hakyll
 
-
---------------------------------------------------------------------------------
+--
+-- main hakyll generation script
+--
 main :: IO ()
 main = hakyll $ do
     match "images/*" $ do
@@ -59,8 +59,9 @@ main = hakyll $ do
 
     match "templates/*" $ compile templateBodyCompiler
 
-
---------------------------------------------------------------------------------
+--
+-- generate date field
+--
 postCtx :: Context String
 postCtx =
     dateField "date" "%B %e, %Y" `mappend`
