@@ -7,13 +7,21 @@ import           Hakyll
 --
 main :: IO ()
 main = hakyll $ do
-    match "images/*" $ do
+    match "pic/*" $ do
         route   idRoute
         compile copyFileCompiler
 
-    match "css/*" $ do
+    match "fonts/*" $ do
+        route   idRoute
+        compile copyFileCompiler
+
+    match "css/*.css" $ do
         route   idRoute
         compile compressCssCompiler
+
+    match "css/main*.scss" $ do
+      route   $ setExtension "css"
+      compile scssCompiler
 
     match "templates/*" $ compile templateBodyCompiler
 
@@ -48,15 +56,10 @@ main = hakyll $ do
     match "site/index.html" $ do
         route $ site idRoute
         compile $ do
-            posts <- recentFirst =<< loadAll "site/posts/*"
-            let indexCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Home"                `mappend`
-                    defaultContext
-
+            let indexCtx = defaultContext
             getResourceBody
                 >>= applyAsTemplate indexCtx
-                >>= loadAndApplyTemplate "templates/default.html" indexCtx
+                >>= loadAndApplyTemplate "templates/base.html" indexCtx
                 >>= relativizeUrls
 
 --
@@ -72,3 +75,16 @@ postCtx :: Context String
 postCtx =
     dateField "date" "%B %e, %Y" `mappend`
     defaultContext
+
+-- create a SCSS compiler that transpiles the SCSS to CSS and minifies
+-- it (relying on the external 'sass' tool)
+-- https://codetalk.io/posts/2016-05-10-compiling-scss-and-js-in-hakyll.html
+scssCompiler :: Compiler (Item String)
+scssCompiler = do
+  getResourceString
+    >>= withItemBody (unixFilter "sass" [ "-s"
+                                        , "--scss"
+                                        , "--compass"
+                                        , "--style", "compressed"
+                                        , "--load-path", "css"
+                                        ])

@@ -1,0 +1,251 @@
+@font-face {
+    font-family: "Inconsolata";
+    src: url('/fonts/Inconsolata-Regular.eot');
+    src: local('Inconsolata'), local('Inconsolata-Regular'),
+    /**/ url('/fonts/Inconsolata-Regular.woff') format('woff'),
+    /**/ url('/fonts/Inconsolata-Regular.ttf') format('truetype'),
+    /**/ url('/fonts/Inconsolata-Regular.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Inconsolata";
+    src: url('/fonts/Inconsolata-Bold.eot');
+    src: local('Inconsolata Bold'), local('Inconsolata-Bold'),
+    /**/ url('/fonts/Inconsolata-Bold.woff') format('woff'),
+    /**/ url('/fonts/Inconsolata-Bold.ttf') format('truetype'),
+    /**/ url('/fonts/Inconsolata-Bold.svg') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Source Sans Pro";
+    src: url('/fonts/SourceSansPro-Regular.eot');
+    src: local('Source Sans Pro'), local('SourceSansPro-Regular'),
+    /**/ url('/fonts/SourceSansPro-Regular.woff') format('woff'),
+    /**/ url('/fonts/SourceSansPro-Regular.ttf') format('truetype'),
+    /**/ url('/fonts/SourceSansPro-Regular.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Source Sans Pro";
+    src: url('/fonts/SourceSansPro-Bold.eot');
+    src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'),
+    /**/ url('/fonts/SourceSansPro-Bold.woff') format('woff'),
+    /**/ url('/fonts/SourceSansPro-Bold.ttf') format('truetype'),
+    /**/ url('/fonts/SourceSansPro-Bold.svg') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+$break-mobile: 780px;
+$break-laptop: 1370px;
+
+@mixin respond-to($media) {
+    @if $media == mobile {
+        @media only screen and (max-width: $break-mobile) {
+            @content;
+        }
+    }
+    @else if $media == laptop {
+        @media only screen and (min-width: $break-mobile + 1)
+        /**/               and (max-width: $break-laptop - 1) {
+            @content;
+        }
+    }
+    @else if $media == desktop {
+        @media only screen and (min-width: $break-laptop) {
+            @content;
+        }
+    }
+    @else if $media == landscape {
+        @media only screen and (orientation: landscape) {
+            @content;
+        }
+    }
+    @else if $media == portrait {
+        @media only screen and (orientation: portrait) {
+            @content;
+        }
+    }
+    @else if $media == touch {
+        @at-root .has-touch & {
+            @content;
+        }
+    }
+    @else if $media == mouse {
+        @at-root .no-touch & {
+            @content;
+        }
+    }
+}
+
+@mixin hover-or-active {
+    @include respond-to(mouse) { &:hover  { @content; } }
+    @include respond-to(touch) { &:active { @content; } }
+}
+
+h1, h2, h3, h4, h5, h6, p, body, a, img, ul, ol, blockquote, pre {
+    margin: 0; padding: 0; border: 0;
+}
+
+body {
+    font-size: 18px;
+    line-height: 1.52;
+    font-family: 'Inconsolata', monospaced;
+    background-color: $bg-color;
+
+    @include respond-to(mobile) {
+        font-size: 14px;
+    }
+    @include respond-to(laptop) {
+        font-size: 18px;
+    }
+    @include respond-to(desktop) {
+        font-size: 22px;
+    }
+}
+
+.content-wrap {
+    width: 34em;
+    margin: 0 auto;
+}
+
+body, a {
+    color: $fg-color;
+    text-decoration: none;
+}
+
+a {
+    padding-bottom: 2px;
+    border-bottom: 2px $fg-color solid;
+}
+
+a:hover {
+    color: $hl-color;
+    text-decoration: none;
+    border-bottom: 2px $hl-color solid;
+}
+
+p {
+    margin-bottom: 1.52em;
+}
+
+pre {
+    font-size: 0.9em;
+    overflow: auto;
+    background: #fff;
+    border: 1px dashed #d2d2d2;
+    border-radius: 0.25em;
+    margin-bottom: 1.8em;
+    padding: 1em;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 1em;
+    color: red;
+}
+
+h2 {
+    font-size: 1.2em;
+    font-weight: 400;
+    line-height: 1.43;
+    margin-bottom: 1.35em;
+}
+
+h3 {
+    font-style: italic;
+    text-align: center;
+    font-weight: 400;
+    font-size: 1.4em;
+    margin-top: 1.8em;
+    margin-bottom: 0.8em;
+}
+
+ol, ul {
+    margin: 0 1.4em 1.4em 4em;
+}
+
+li {
+    margin-bottom: 0.5em;
+}
+
+blockquote {
+    margin: 1.2em 3em;
+    padding-left: 1em;
+    font-style: italic;
+}
+
+hr {
+    border: 0;
+    border-top: 1px dashed #d2d2d2;
+    height: 0;
+    margin: 1.6em 0;
+}
+
+.index {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+$logo-height-orig: 14.72em;
+$logo-width-orig:  44.55em;
+$logo-scale:       0.25;
+
+$logo-height: $logo-height-orig * $logo-scale;
+$logo-width:  $logo-width-orig * $logo-scale;
+
+.index-logo {
+    position: absolute;
+    left: 0;
+    right: 3em;
+    top: 2em;
+    height: $logo-height;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: calc(100% + #{$logo-height}/18 - #{$logo-width});
+        top: 9%;
+        bottom: 9%;
+        background-image: url(#{$logo-sin});
+        background-size: contain;
+        background-position-x: 100%;
+        opacity: $dehighlight0;
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: $logo-width;
+        right: 0;
+        background-image: url(#{$logo-text});
+        background-size: contain;
+    }
+}
+
+.index-intro {
+    position: absolute;
+    top: calc(50% + 2em);
+    width: 20em;
+    left: 0; right: 0;
+    margin: 0 auto;
+    transform: translateY(-50%);
+    text-transform: lowercase;
+
+    .portfolio {
+        width: 100%;
+        text-align: center;
+    }
+
+    .tags {
+        text-align: right;
+        opacity: $dehighlight1;;
+    }
+}

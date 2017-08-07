@@ -8,7 +8,7 @@ else
 endif
 
 all: _site
-.PHONY: clean
+.PHONY: clean _site
 
 gen: gen.hs
 	$(eval_) "ghc --make gen.hs -outputdir tmp"
@@ -18,3 +18,9 @@ _site: gen
 
 clean: gen
 	$(eval_) "./gen clean"
+
+server: gen
+	$(eval_) "./gen server"
+
+watch: gen
+	$(eval_) "./gen watch"

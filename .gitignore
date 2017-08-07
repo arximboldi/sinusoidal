@@ -3,5 +3,6 @@ build/
 tmp/
 _site/
 _cache/
+.sass-cache/
 npm-debug.log
 gen
