@@ -24,3 +24,7 @@ server: gen
 
 watch: gen
 	$(eval_) "./gen watch"
+
+DEST = ~/sync/sinusoidal/
+copy: _site
+	rsync -av _site/* $(DEST)
