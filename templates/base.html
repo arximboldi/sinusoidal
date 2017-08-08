@@ -16,14 +16,17 @@
   </head>
   <body>
     <script>
-     const THEMES = ["dark", "grey", "red", "white"];
+     var THEMES = ["dark", "grey", "red", "white"];
      function setTheme(theme) {
          THEMES.forEach(function (t) {
              document.getElementById(t + "-style").disabled = t !== theme;
          })
      }
-     setTheme(THEMES[Date.now() % THEMES.length]);
-     console.log("Using theme:", theme);
+     var hours   = (new Date()).getHours();
+     var isNight = hours >= 19 || hours < 7;
+     var theme   = isNight ? "dark" : "white";
+     setTheme(theme);
+     console.log("Using theme based on time of day:", theme);
     </script>
     <div class="index">
       $body$
