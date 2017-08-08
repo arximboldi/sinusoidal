@@ -3,7 +3,7 @@ with import <nixpkgs> {};
 stdenv.mkDerivation rec {
   name = "sinusoid.al";
   buildInputs = [
-    sassc
+    sass
     zlib
     gnumake
     (haskellPackages.ghcWithPackages (p: with p; [
