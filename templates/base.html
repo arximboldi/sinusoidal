@@ -4,21 +4,25 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
-    <title>∿ Sinusoidal Engineering ∿
+    <title>
+      ∿ Sinusoidal Engineering ∿
     </title>
     <link rel="alternate" href="http://localhost:8080/feed.xml" type="application/rss+xml" title="">
-    <link rel="stylesheet" type="text/css" href="/css/main-dark.css" id="dark-style">
-    <link rel="stylesheet" type="text/css" href="/css/main-grey.css" id="grey-style">
-    <link rel="stylesheet" type="text/css" href="/css/main-red.css" id="red-style">
+    <link rel="stylesheet" type="text/css" href="/css/main-dark.css"  id="dark-style">
+    <link rel="stylesheet" type="text/css" href="/css/main-grey.css"  id="grey-style">
+    <link rel="stylesheet" type="text/css" href="/css/main-red.css"   id="red-style">
+    <link rel="stylesheet" type="text/css" href="/css/main-white.css" id="white-style">
     <link rel="shortcut icon" href="favicon.ico">
   </head>
   <body>
     <script>
-     var themes = ["grey", "dark", "red"];
-     var theme  = themes[Date.now()%3];
-     themes.forEach(function (t) {
-         document.getElementById(t + "-style").disabled = t !== theme;
-     })
+     const THEMES = ["dark", "grey", "red", "white"];
+     function setTheme(theme) {
+         THEMES.forEach(function (t) {
+             document.getElementById(t + "-style").disabled = t !== theme;
+         })
+     }
+     setTheme(THEMES[Date.now() % THEMES.length]);
      console.log("Using theme:", theme);
     </script>
     <div class="index">
