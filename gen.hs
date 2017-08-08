@@ -1,12 +1,15 @@
 {-# LANGUAGE OverloadedStrings #-}
 import           Data.Monoid (mappend)
 import           Hakyll
+import qualified GHC.IO.Encoding as Encoding
 
 --
 -- main hakyll generation script
 --
 main :: IO ()
-main = hakyll $ do
+main = do
+  Encoding.setLocaleEncoding Encoding.utf8
+  hakyll $ do
     match "pic/*" $ do
         route   idRoute
         compile copyFileCompiler
@@ -84,7 +87,5 @@ scssCompiler = do
   getResourceString
     >>= withItemBody (unixFilter "sass" [ "-s"
                                         , "--scss"
-                                        , "--compass"
-                                        , "--style", "compressed"
-                                        , "--load-path", "css"
+                                        , "-I", "css"
                                         ])
