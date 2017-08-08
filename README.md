@@ -1,5 +1,5 @@
 
 ```
 make
-make serve
+make server
 ```
