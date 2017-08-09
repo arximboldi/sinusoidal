@@ -29,18 +29,11 @@ main = do
     match "templates/*" $ compile templateBodyCompiler
     match "templates/icon/*" $ compile templateBodyCompiler
 
-    match (fromList ["site/about.rst",
-                     "site/contact.markdown"]) $ do
-        route   $ site $ setExtension "html"
-        compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= relativizeUrls
-
     match "site/posts/*" $ do
         route $ site $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
-            >>= loadAndApplyTemplate "templates/default.html" postCtx
+            >>= loadAndApplyTemplate "templates/base.html" postCtx
             >>= relativizeUrls
 
     match "site/posts.html" $ do
