@@ -207,6 +207,8 @@ $logo-width:  $logo-width-orig * $logo-scale;
     right: 3em;
     top: 2em;
     height: $logo-height;
+    border: 0;
+    &:hover { border: 0; }
 
     &::before {
         content: "";
