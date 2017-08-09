@@ -232,7 +232,7 @@ $logo-width:  $logo-width-orig * $logo-scale;
 
 .index-intro {
     position: absolute;
-    top: calc(50% + 2em);
+    top: calc(50% + 3em);
     width: 20em;
     left: 0; right: 0;
     margin: 0 auto;
@@ -247,6 +247,11 @@ $logo-width:  $logo-width-orig * $logo-scale;
     .tags {
         text-align: center;
         opacity: $dehighlight1;
+    }
+
+    .icons {
+        text-align: center;
+        a { border: 0; }
     }
 }
 
@@ -268,5 +273,22 @@ $logo-width:  $logo-width-orig * $logo-scale;
         display: block;
         float: right;
         opacity: $dehighlight1;
+    }
+}
+
+.icons-github {}
+.icons-twitter {}
+
+.icon {
+    display: inline-block;
+    fill: $fg-color;
+    width: 64px;
+    height: 64px;
+}
+
+a .icon {
+    opacity: $dehighlight1;
+    &:hover {
+        opacity: 1;
     }
 }

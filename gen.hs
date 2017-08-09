@@ -27,6 +27,7 @@ main = do
       compile scssCompiler
 
     match "templates/*" $ compile templateBodyCompiler
+    match "templates/icon/*" $ compile templateBodyCompiler
 
     match (fromList ["site/about.rst",
                      "site/contact.markdown"]) $ do
