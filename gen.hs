@@ -42,27 +42,25 @@ main = do
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
-    create ["archive.html"] $ do
-        route idRoute
+    match "site/posts.html" $ do
+        route   $ constRoute "posts/index.html"
         compile $ do
             posts <- recentFirst =<< loadAll "site/posts/*"
-            let archiveCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Archives"            `mappend`
-                    defaultContext
-
-            makeItem ""
-                >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
-                >>= loadAndApplyTemplate "templates/default.html" archiveCtx
+            let ctx =
+                  listField "posts" postCtx (return posts) `mappend`
+                  constField "title" "Archives"            `mappend`
+                  defaultContext
+            getResourceBody
+                >>= applyAsTemplate ctx
+                >>= loadAndApplyTemplate "templates/base.html" ctx
                 >>= relativizeUrls
 
     match "site/index.html" $ do
         route $ site idRoute
         compile $ do
-            let indexCtx = defaultContext
             getResourceBody
-                >>= applyAsTemplate indexCtx
-                >>= loadAndApplyTemplate "templates/base.html" indexCtx
+                >>= applyAsTemplate defaultContext
+                >>= loadAndApplyTemplate "templates/base.html" defaultContext
                 >>= relativizeUrls
 
 --

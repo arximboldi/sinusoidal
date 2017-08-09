@@ -249,3 +249,24 @@ $logo-width:  $logo-width-orig * $logo-scale;
         opacity: $dehighlight1;
     }
 }
+
+.index-posts {
+    position: absolute;
+    top: 40%;
+    max-width: 30em;
+    left: 0; right: 0;
+    margin: 0 auto;
+    text-transform: lowercase;
+    ul {
+        list-style-type: '';
+    }
+    .post-title {
+        display: block;
+        float: left;
+    }
+    .post-date {
+        display: block;
+        float: right;
+        opacity: $dehighlight1;
+    }
+}
