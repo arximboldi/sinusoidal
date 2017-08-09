@@ -19,6 +19,9 @@ _site: gen
 clean: gen
 	$(eval_) "./gen clean"
 
+rebuild: gen
+	$(eval_) "./gen rebuild"
+
 server: gen
 	$(eval_) "./gen server"
 
